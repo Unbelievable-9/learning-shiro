@@ -30,7 +30,7 @@ public class BasicRealm implements Realm {
             throw new UnknownAccountException();
         }
 
-        if (!credentials.equals("88888888")) {
+        if (!credentials.equals("123456")) {
             throw new IncorrectCredentialsException();
         }
 

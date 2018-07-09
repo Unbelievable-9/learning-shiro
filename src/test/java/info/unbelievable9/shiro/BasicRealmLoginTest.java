@@ -19,12 +19,12 @@ import java.util.function.Supplier;
  * Created on : 2018/7/6
  * Author     : Unbelievable9
  **/
-public class BasicRealmLoginTest {
+class BasicRealmLoginTest {
 
     private static final Logger logger = LoggerFactory.getLogger(BasicRealmLoginTest.class);
 
     @Test
-    public void login() {
+    void login() {
         // Initiate Security Manager
         Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro-realm-basic.ini");
         SecurityManager securityManager = factory.getInstance();
@@ -32,7 +32,7 @@ public class BasicRealmLoginTest {
 
         // Setup Username & Password
         Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken("Jack", "88888888");
+        UsernamePasswordToken token = new UsernamePasswordToken("Jack", "123456");
 
         try {
             subject.login(token);
