@@ -1,8 +1,7 @@
-package info.unbelievable9.shiro;
+package info.unbelievable9.shiro.basic;
 
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.IncorrectCredentialsException;
-import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.config.IniSecurityManagerFactory;
 import org.apache.shiro.mgt.SecurityManager;
@@ -16,18 +15,17 @@ import org.junit.platform.commons.logging.LoggerFactory;
 import java.util.function.Supplier;
 
 /**
- * Copyright 2018 (C) Yunjian-VC
- * Created on : 2018/7/9
+ * Created on : 2018/7/6
  * Author     : Unbelievable9
  **/
-public class JdbcRealmLoginTest {
+class RealmLoginTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(JdbcRealmLoginTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(RealmLoginTest.class);
 
     @Test
-    public void shouldLogin() {
+    void shouldLogin() {
         // Initiate Security Manager
-        Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro-jdbc-realms.ini");
+        Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro/basic/shiro-realm.ini");
         SecurityManager securityManager = factory.getInstance();
         SecurityUtils.setSecurityManager(securityManager);
 
@@ -38,8 +36,8 @@ public class JdbcRealmLoginTest {
         // Login
         try {
             subject.login(token);
-        } catch (UnknownAccountException | IncorrectCredentialsException e) {
-            Supplier<String> supplier = () -> e.getClass().toString() + " - Login Failed.";
+        } catch (AuthenticationException e) {
+            Supplier<String> supplier = () -> e.getClass().toString() + " - Login Failed";
 
             logger.error(supplier);
         }

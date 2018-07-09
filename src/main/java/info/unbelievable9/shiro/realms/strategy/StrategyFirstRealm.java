@@ -1,18 +1,17 @@
-package info.unbelievable9.shiro.realms;
+package info.unbelievable9.shiro.realms.strategy;
 
 import org.apache.shiro.authc.*;
 import org.apache.shiro.realm.Realm;
 
 /**
- * Copyright 2018 (C) Yunjian-VC
  * Created on : 2018/7/9
  * Author     : Unbelievable9
  **/
-public class SecondRealm implements Realm {
+public class StrategyFirstRealm implements Realm {
 
     @Override
     public String getName() {
-        return "second_realm";
+        return "strategy_first_realm";
     }
 
     @Override
@@ -22,17 +21,17 @@ public class SecondRealm implements Realm {
 
     @Override
     public AuthenticationInfo getAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        String principle = (String) authenticationToken.getPrincipal();
-        String credentials = new String((char[]) authenticationToken.getCredentials());
+        String principal = (String) authenticationToken.getPrincipal();
+        String credentials = new String((char[])authenticationToken.getCredentials());
 
-        if (!principle.equals("Gia")) {
+        if (!principal.equals("Jack")) {
             throw new UnknownAccountException();
         }
 
-        if (!credentials.equals("19910130")) {
+        if (!credentials.equals("19901017")) {
             throw new IncorrectCredentialsException();
         }
 
-        return new SimpleAuthenticationInfo(principle, credentials, getName());
+        return new SimpleAuthenticationInfo(principal, credentials, getName());
     }
 }
