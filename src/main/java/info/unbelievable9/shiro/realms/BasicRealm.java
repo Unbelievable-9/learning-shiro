@@ -1,4 +1,4 @@
-package info.unbelievable9.shiro.realm;
+package info.unbelievable9.shiro.realms;
 
 import org.apache.shiro.authc.*;
 import org.apache.shiro.realm.Realm;
@@ -24,7 +24,7 @@ public class BasicRealm implements Realm {
     public AuthenticationInfo getAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         String principle = (String) authenticationToken.getPrincipal();
         String credentials = new String((char[]) authenticationToken.getCredentials());
-        
+
         if (!principle.equals("Jack")) {
             throw new UnknownAccountException();
         }

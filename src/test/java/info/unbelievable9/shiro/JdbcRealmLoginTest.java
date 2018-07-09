@@ -27,7 +27,7 @@ public class JdbcRealmLoginTest {
     @Test
     public void shouldLogin() {
         // Initiate Security Manager
-        Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro-jdbc-realm.ini");
+        Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro-jdbc-realms.ini");
         SecurityManager securityManager = factory.getInstance();
         SecurityUtils.setSecurityManager(securityManager);
 

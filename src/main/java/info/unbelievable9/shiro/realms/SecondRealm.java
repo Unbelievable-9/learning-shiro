@@ -1,4 +1,4 @@
-package info.unbelievable9.shiro.realm;
+package info.unbelievable9.shiro.realms;
 
 import org.apache.shiro.authc.*;
 import org.apache.shiro.realm.Realm;
