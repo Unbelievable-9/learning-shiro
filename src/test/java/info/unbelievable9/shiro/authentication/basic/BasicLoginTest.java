@@ -31,7 +31,7 @@ class BasicLoginTest {
 
         // Setup Username & Password
         Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken("zhaoliyang", "88888888");
+        UsernamePasswordToken token = new UsernamePasswordToken("Jack", "123456");
 
         // Login
         try {
