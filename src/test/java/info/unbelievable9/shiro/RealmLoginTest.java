@@ -19,20 +19,20 @@ import java.util.function.Supplier;
  * Created on : 2018/7/6
  * Author     : Unbelievable9
  **/
-class BasicLoginTest {
+class RealmLoginTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(BasicLoginTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(RealmLoginTest.class);
 
     @Test
     void login() {
         // Initiate Security Manager
-        Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro-basic.ini");
+        Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro-realm.ini");
         SecurityManager securityManager = factory.getInstance();
         SecurityUtils.setSecurityManager(securityManager);
 
         // Setup Username & Password
         Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken("zhaoliyang", "88888888");
+        UsernamePasswordToken token = new UsernamePasswordToken("Jack", "123456");
 
         // Login
         try {

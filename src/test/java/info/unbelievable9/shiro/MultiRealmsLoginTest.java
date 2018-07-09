@@ -1,7 +1,8 @@
 package info.unbelievable9.shiro;
 
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.config.IniSecurityManagerFactory;
 import org.apache.shiro.mgt.SecurityManager;
@@ -16,28 +17,29 @@ import java.util.function.Supplier;
 
 /**
  * Copyright 2018 (C) Yunjian-VC
- * Created on : 2018/7/6
+ * Created on : 2018/7/9
  * Author     : Unbelievable9
  **/
-class BasicRealmLoginTest {
+class MultiRealmsLoginTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(BasicRealmLoginTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(MultiRealmsLoginTest.class);
 
     @Test
     void login() {
         // Initiate Security Manager
-        Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro-realm-basic.ini");
+        Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro-multi-realms.ini");
         SecurityManager securityManager = factory.getInstance();
         SecurityUtils.setSecurityManager(securityManager);
 
         // Setup Username & Password
         Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken("Jack", "123456");
+        UsernamePasswordToken token = new UsernamePasswordToken("Gia", "19910130");
 
+        // Login
         try {
             subject.login(token);
-        } catch (AuthenticationException e) {
-            Supplier<String> supplier = () -> e.getClass().toString() + " - Login Failed";
+        } catch (UnknownAccountException | IncorrectCredentialsException e) {
+            Supplier<String> supplier = () -> e.getClass().toString() + " - Login Failed.";
 
             logger.error(supplier);
         }

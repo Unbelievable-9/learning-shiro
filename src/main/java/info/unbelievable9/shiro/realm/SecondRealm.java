@@ -5,14 +5,14 @@ import org.apache.shiro.realm.Realm;
 
 /**
  * Copyright 2018 (C) Yunjian-VC
- * Created on : 2018/7/6
+ * Created on : 2018/7/9
  * Author     : Unbelievable9
  **/
-public class BasicRealm implements Realm {
+public class SecondRealm implements Realm {
 
     @Override
     public String getName() {
-        return "basic_realm";
+        return "second_realm";
     }
 
     @Override
@@ -24,12 +24,12 @@ public class BasicRealm implements Realm {
     public AuthenticationInfo getAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         String principle = (String) authenticationToken.getPrincipal();
         String credentials = new String((char[]) authenticationToken.getCredentials());
-        
-        if (!principle.equals("Jack")) {
+
+        if (!principle.equals("Gia")) {
             throw new UnknownAccountException();
         }
 
-        if (!credentials.equals("123456")) {
+        if (!credentials.equals("19910130")) {
             throw new IncorrectCredentialsException();
         }
 
