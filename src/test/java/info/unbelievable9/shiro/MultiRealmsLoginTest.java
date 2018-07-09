@@ -25,7 +25,7 @@ class MultiRealmsLoginTest {
     private static final Logger logger = LoggerFactory.getLogger(MultiRealmsLoginTest.class);
 
     @Test
-    void login() {
+    void shouldLogin() {
         // Initiate Security Manager
         Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro-multi-realms.ini");
         SecurityManager securityManager = factory.getInstance();
@@ -46,6 +46,7 @@ class MultiRealmsLoginTest {
 
         Assertions.assertTrue(subject.isAuthenticated());
 
+        // Logout
         subject.logout();
     }
 }

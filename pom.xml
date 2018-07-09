@@ -20,6 +20,18 @@
         </dependency>
 
         <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>6.0.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.1.10</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>1.6.4</version>
@@ -52,6 +64,16 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>5.1.4</version>
+                <configuration>
+                    <url>jdbc:mysql://127.0.0.1:3306/shiro?useUnicode=true&amp;characterEncoding=UTF-8</url>
+                    <user>demo</user>
+                    <password>demo</password>
                 </configuration>
             </plugin>
         </plugins>

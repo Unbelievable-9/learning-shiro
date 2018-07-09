@@ -24,7 +24,7 @@ class RealmLoginTest {
     private static final Logger logger = LoggerFactory.getLogger(RealmLoginTest.class);
 
     @Test
-    void login() {
+    void shouldLogin() {
         // Initiate Security Manager
         Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro-realm.ini");
         SecurityManager securityManager = factory.getInstance();
@@ -45,6 +45,7 @@ class RealmLoginTest {
 
         Assertions.assertTrue(subject.isAuthenticated());
 
+        // Logout
         subject.logout();
     }
 }
