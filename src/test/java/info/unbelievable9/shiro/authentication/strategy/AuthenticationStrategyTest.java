@@ -13,16 +13,12 @@ import org.apache.shiro.util.ThreadContext;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.commons.logging.Logger;
-import org.junit.platform.commons.logging.LoggerFactory;
 
 /**
  * Created on : 2018/7/9
  * Author     : Unbelievable9
  **/
 class AuthenticationStrategyTest {
-
-    private static final Logger logger = LoggerFactory.getLogger(AuthenticationStrategyTest.class);
 
     private void login(String configFilePath) {
         // Initiate Security Manager
