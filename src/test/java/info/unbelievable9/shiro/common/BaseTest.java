@@ -15,11 +15,13 @@ import org.junit.jupiter.api.AfterEach;
  **/
 public class BaseTest {
 
-    @AfterEach
-    public void tearDown() {
-        ThreadContext.unbindSubject();
-    }
-
+    /**
+     * System User Login
+     *
+     * @param configFilePath Shiro Config File Path
+     * @param username       Username
+     * @param password       Plain Text Password
+     */
     protected void login(String configFilePath, String username, String password) {
         // Initiate Security Manager
         Factory<SecurityManager> factory = new IniSecurityManagerFactory(configFilePath);
@@ -34,7 +36,17 @@ public class BaseTest {
         subject.login(token);
     }
 
+    /**
+     * Retrieve Current Shiro Subject
+     *
+     * @return Shiro Subject
+     */
     protected Subject subject() {
         return SecurityUtils.getSubject();
+    }
+
+    @AfterEach
+    public void tearDown() {
+        ThreadContext.unbindSubject();
     }
 }

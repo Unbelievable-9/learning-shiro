@@ -25,7 +25,7 @@ class RealmLoginTest {
     @Test
     void shouldLogin() {
         // Initiate Security Manager
-        Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro/authentication/basic/shiro-realm.ini");
+        Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro/authentication/basic/shiro-demo.ini");
         SecurityManager securityManager = factory.getInstance();
         SecurityUtils.setSecurityManager(securityManager);
 
