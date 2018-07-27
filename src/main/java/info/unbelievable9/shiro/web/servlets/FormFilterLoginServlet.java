@@ -19,6 +19,7 @@ public class FormFilterLoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // If FormAuthenticationFilter Failed
         doPost(req, resp);
     }
 
