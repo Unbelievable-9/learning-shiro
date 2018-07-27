@@ -17,7 +17,7 @@
     </context-param>
     <context-param>
         <param-name>shiroConfigLocations</param-name>
-        <param-value>classpath:shiro/web/shiro.ini</param-value>
+        <param-value>classpath:shiro/web/shiro-form-filter.ini</param-value>
     </context-param>
 
     <filter>

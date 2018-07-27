@@ -1,7 +1,5 @@
 package info.unbelievable9.shiro.web.servlets;
 
-import org.apache.shiro.SecurityUtils;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,16 +8,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created on : 2018/7/26
+ * Created on : 2018/7/27
  * Author     : Unbelievable9
  **/
-@WebServlet(name = "logoutServlet", urlPatterns = "/logout")
-public class LogoutServlet extends HttpServlet {
+@WebServlet(name = "unauthorizedServlet", urlPatterns = "/unauthorized")
+public class UnauthorizedServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        SecurityUtils.getSubject().logout();
-
-        req.getRequestDispatcher("/WEB-INF/jsp/logoutSuccess.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/jsp/unauthorized.jsp").forward(req, resp);
     }
 }

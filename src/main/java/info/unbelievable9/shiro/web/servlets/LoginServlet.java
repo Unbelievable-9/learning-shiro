@@ -49,6 +49,7 @@ public class LoginServlet extends HttpServlet {
             req.setAttribute("error", errorMsg);
             req.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(req, resp);
         } else {
+            req.setAttribute("subject", subject);
             req.getRequestDispatcher("/WEB-INF/jsp/loginSuccess.jsp").forward(req, resp);
         }
     }

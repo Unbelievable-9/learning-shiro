@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: unbelievable9
-  Date: 2018/7/26
-  Time: 下午5:27
+  Date: 2018/7/27
+  Time: 上午11:27
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -17,7 +17,7 @@
 
 <div class="error">${error}</div>
 
-<form action="${pageContext.request.contextPath}/login" method="post">
+<form action="${pageContext.request.contextPath}/formFilterLogin" method="post">
     <label>
         Username:
         <input type="text" name="username">
