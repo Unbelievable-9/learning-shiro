@@ -34,8 +34,12 @@ public class CustomFormLoginFilter extends PathMatchingFilter {
 
         try {
             SecurityUtils.getSubject().login(token);
+
+            log.info("Login Success.");
         } catch (Exception e) {
             request.setAttribute("shiroLoginFailure", e.getClass());
+
+            log.info("Login Failed.");
 
             return false;
         }
@@ -57,6 +61,8 @@ public class CustomFormLoginFilter extends PathMatchingFilter {
     @Override
     protected boolean onPreHandle(ServletRequest request, ServletResponse response, Object mappedValue) throws Exception {
         if (SecurityUtils.getSubject().isAuthenticated()) {
+            log.info("Already Login.");
+
             return true;
         }
 
@@ -64,6 +70,8 @@ public class CustomFormLoginFilter extends PathMatchingFilter {
         HttpServletResponse servletResponse = (HttpServletResponse) response;
 
         if (isLoginRequest(servletRequest)) {
+            log.info("Redirect to Login URL.");
+
             if (servletRequest.getMethod().equalsIgnoreCase("post")) {
                 boolean loginSuccess = login(servletRequest);
 
@@ -74,6 +82,8 @@ public class CustomFormLoginFilter extends PathMatchingFilter {
 
             return true;
         } else {
+            log.info("Save Request Before Login.");
+
             saveRequestAndRedirectToLogin(servletRequest, servletResponse);
 
             return true;
