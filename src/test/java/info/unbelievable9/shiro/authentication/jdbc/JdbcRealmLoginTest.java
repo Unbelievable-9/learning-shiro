@@ -1,5 +1,6 @@
 package info.unbelievable9.shiro.authentication.jdbc;
 
+import lombok.extern.apachecommons.CommonsLog;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
@@ -10,8 +11,6 @@ import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.Factory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.commons.logging.Logger;
-import org.junit.platform.commons.logging.LoggerFactory;
 
 import java.util.function.Supplier;
 
@@ -19,9 +18,8 @@ import java.util.function.Supplier;
  * Created on : 2018/7/9
  * Author     : Unbelievable9
  **/
+@CommonsLog
 class JdbcRealmLoginTest {
-
-    private static final Logger logger = LoggerFactory.getLogger(JdbcRealmLoginTest.class);
 
     @Test
     void shouldLogin() {
@@ -40,7 +38,7 @@ class JdbcRealmLoginTest {
         } catch (UnknownAccountException | IncorrectCredentialsException e) {
             Supplier<String> supplier = () -> e.getClass().toString() + " - Login Failed.";
 
-            logger.error(supplier);
+            log.error(supplier);
         }
 
         Assertions.assertTrue(subject.isAuthenticated());
