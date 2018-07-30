@@ -19,6 +19,10 @@
 
 <form action="${pageContext.request.contextPath}/formFilterLogin" method="post">
     <label>
+        Form Filter Login
+    </label>
+    <br/>
+    <label>
         Username:
         <input type="text" name="username">
     </label>

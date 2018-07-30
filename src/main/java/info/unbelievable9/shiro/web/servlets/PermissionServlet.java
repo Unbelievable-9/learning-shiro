@@ -11,20 +11,20 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created on : 2018/7/27
+ * Created on : 2018/7/30
  * Author     : Unbelievable9
  **/
-@WebServlet(name = "roleServlet", urlPatterns = "/role")
-public class RoleServlet extends HttpServlet {
+@WebServlet(name = "permissionServlet", urlPatterns = "permission")
+public class PermissionServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Subject subject = SecurityUtils.getSubject();
 
         // FormAuthenticationFilter will handle AuthorizationException
-        subject.checkRole("admin");
+        subject.checkPermission("user:create");
 
         req.setAttribute("subject", subject);
-        req.getRequestDispatcher("/WEB-INF/jsp/hasRole.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/jsp/hasPermission.jsp").forward(req, resp);
     }
 }

@@ -19,6 +19,10 @@
 
 <form action="${pageContext.request.contextPath}/login" method="post">
     <label>
+        Normal Login
+    </label>
+    <br/>
+    <label>
         Username:
         <input type="text" name="username">
     </label>
