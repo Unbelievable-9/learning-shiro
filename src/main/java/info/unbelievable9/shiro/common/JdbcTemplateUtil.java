@@ -1,4 +1,4 @@
-package info.unbelievable9.shiro.demo.utils;
+package info.unbelievable9.shiro.common;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -22,7 +22,9 @@ public class JdbcTemplateUtil {
     }
 
     public static JdbcTemplate jdbcTemplate() {
-        if (jdbcTemplate == null) jdbcTemplate = createJdbcTemplate();
+        if (jdbcTemplate == null) {
+            jdbcTemplate = createJdbcTemplate();
+        }
 
         return jdbcTemplate;
     }

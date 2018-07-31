@@ -11,4 +11,5 @@ create unique index idx_users_username
   on users (username);
 
 -- Init User
-insert into users (username, password) values ('Jack', '123456');
+insert into users (username, password)
+values ('Jack', '123456');

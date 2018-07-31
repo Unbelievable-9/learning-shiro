@@ -4,7 +4,6 @@ import info.unbelievable9.shiro.demo.entity.SysPermission;
 import info.unbelievable9.shiro.demo.entity.SysRole;
 import info.unbelievable9.shiro.demo.entity.SysUser;
 import info.unbelievable9.shiro.demo.service.*;
-import info.unbelievable9.shiro.demo.utils.JdbcTemplateUtil;
 import org.junit.jupiter.api.BeforeEach;
 
 /**

@@ -1,4 +1,4 @@
-package info.unbelievable9.shiro.demo.utils;
+package info.unbelievable9.shiro.common;
 
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Ehcache;
@@ -23,7 +23,7 @@ public class PasswordRetryLimitHashedCredentialsMatcher extends HashedCredential
         CacheManager cacheManager =
                 CacheManager.newInstance(Objects.requireNonNull(CacheManager.class.getClassLoader().getResource("ehcache/ehcache.xml")));
 
-        passwordRetryLimitCache = cacheManager.getCache("passwordRetryCache");
+        passwordRetryLimitCache = cacheManager.getCache("shiro-passwordRetryCache");
     }
 
     @Override

@@ -1,7 +1,7 @@
 package info.unbelievable9.shiro.demo.dao;
 
+import info.unbelievable9.shiro.common.JdbcTemplateUtil;
 import info.unbelievable9.shiro.demo.entity.SysUser;
-import info.unbelievable9.shiro.demo.utils.JdbcTemplateUtil;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
