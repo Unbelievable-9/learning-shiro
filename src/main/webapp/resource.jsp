@@ -11,6 +11,8 @@
     <title>Shiro Web</title>
 </head>
 <body>
-This is resource :)
+Finally You Got the Resource !
+<br/>
+<a href="${pageContext.request.contextPath}/logout">Logout</a>
 </body>
 </html>

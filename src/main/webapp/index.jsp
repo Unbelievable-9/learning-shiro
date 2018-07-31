@@ -11,9 +11,10 @@
     <title>Main Page</title>
 </head>
 <body>
-
+Welcome to Shiro Web Demo.
+<br/>
 <a href="${pageContext.request.contextPath}/login">Login</a>
 <br>
-
+<a href="${pageContext.request.contextPath}/resource.jsp">Access Resource</a>
 </body>
 </html>

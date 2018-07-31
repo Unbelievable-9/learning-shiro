@@ -12,5 +12,7 @@
 </head>
 <body>
 Access Denied.
+<br/>
+<a href="${pageContext.request.contextPath}/logout">Logout</a>
 </body>
 </html>

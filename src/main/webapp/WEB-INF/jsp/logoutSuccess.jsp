@@ -14,5 +14,6 @@
 Logout Success.
 <br/>
 <a href="${pageContext.request.contextPath}/login">Login</a>
+<a href="${pageContext.request.contextPath}/resource.jsp">Access Source</a>
 </body>
 </html>
