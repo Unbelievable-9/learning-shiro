@@ -15,6 +15,6 @@ Welcome to Shiro Web Demo.
 <br/>
 <a href="${pageContext.request.contextPath}/login">Login</a>
 <br>
-<a href="${pageContext.request.contextPath}/resource.jsp">Access Resource</a>
+<a href="${pageContext.request.contextPath}/resource">Access Resource</a>
 </body>
 </html>

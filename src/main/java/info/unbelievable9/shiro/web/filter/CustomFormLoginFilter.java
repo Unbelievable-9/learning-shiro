@@ -19,8 +19,8 @@ import java.io.IOException;
 @Slf4j
 public class CustomFormLoginFilter extends PathMatchingFilter {
 
-    private static final String LOGIN_URL = "/customLogin.jsp";
-    private static final String LOGIN_SUCCESS_URL = "/";
+    private static final String LOGIN_URL = "/customLogin";
+    private static final String LOGIN_SUCCESS_URL = "/loginSuccess";
 
     private boolean isLoginRequest(HttpServletRequest request) {
         return pathsMatch(LOGIN_URL, request);
@@ -64,29 +64,29 @@ public class CustomFormLoginFilter extends PathMatchingFilter {
             log.info("Already Login.");
 
             return true;
-        }
-
-        HttpServletRequest servletRequest = (HttpServletRequest) request;
-        HttpServletResponse servletResponse = (HttpServletResponse) response;
-
-        if (isLoginRequest(servletRequest)) {
-            log.info("Redirect to Login URL.");
-
-            if (servletRequest.getMethod().equalsIgnoreCase("post")) {
-                boolean loginSuccess = login(servletRequest);
-
-                if (loginSuccess) {
-                    return redirectToLoginSuccess(servletRequest, servletResponse);
-                }
-            }
-
-            return true;
         } else {
-            log.info("Save Request Before Login.");
+            HttpServletRequest servletRequest = (HttpServletRequest) request;
+            HttpServletResponse servletResponse = (HttpServletResponse) response;
 
-            saveRequestAndRedirectToLogin(servletRequest, servletResponse);
+            if (pathsMatch("/", servletRequest)) {
+                return true;
+            } else if (isLoginRequest(servletRequest)) {
+                if (servletRequest.getMethod().equalsIgnoreCase("post")) {
+                    boolean loginSuccess = login(servletRequest);
 
-            return true;
+                    if (loginSuccess) {
+                        return redirectToLoginSuccess(servletRequest, servletResponse);
+                    }
+                }
+
+                return true;
+            } else {
+                log.info("Save Request Before Login.");
+
+                saveRequestAndRedirectToLogin(servletRequest, servletResponse);
+
+                return true;
+            }
         }
     }
 }

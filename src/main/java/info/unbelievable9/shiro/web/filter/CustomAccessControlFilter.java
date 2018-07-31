@@ -1,7 +1,6 @@
 package info.unbelievable9.shiro.web.filter;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.AccessControlFilter;
 
@@ -17,7 +16,7 @@ public class CustomAccessControlFilter extends AccessControlFilter {
 
     @Override
     protected boolean isAccessAllowed(ServletRequest servletRequest, ServletResponse servletResponse, Object o) throws Exception {
-        Subject subject = SecurityUtils.getSubject();
+        Subject subject = getSubject(servletRequest, servletResponse);
 
         if (subject.isAuthenticated()) {
             if (subject.hasRole("admin")) {
@@ -27,8 +26,6 @@ public class CustomAccessControlFilter extends AccessControlFilter {
 
                 return true;
             } else {
-                log.info("Access denied.");
-
                 return false;
             }
         } else {
@@ -38,10 +35,12 @@ public class CustomAccessControlFilter extends AccessControlFilter {
 
     @Override
     protected boolean onAccessDenied(ServletRequest servletRequest, ServletResponse servletResponse) throws Exception {
-        Subject subject = SecurityUtils.getSubject();
+        Subject subject = getSubject(servletRequest, servletResponse);
 
         if (subject.isAuthenticated()) {
             servletRequest.getRequestDispatcher("/WEB-INF/jsp/accessDenied.jsp").forward(servletRequest, servletResponse);
+
+            log.info("Access denied.");
 
             return false;
         } else {
